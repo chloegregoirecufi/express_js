@@ -5,12 +5,14 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
+const flash = require('express-flash');
 
 //initialisation de l'app
 const app = express();
 
 //connexion à MongoDb
-//TODO: prevoir la co
+mongoose.connect('mongodb://expressmongo:27017/mongoexpress',{
+})
 
 //Configuration de le session
 app.use(session({
@@ -26,6 +28,9 @@ app.use(bodyParser.json());
 //configuration du passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+//configuration msg flash
+app.use(flash());
 
 //configuration des routes
 const authRoutes = require('./routes/authRoute');
