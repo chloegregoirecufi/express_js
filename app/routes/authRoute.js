@@ -11,4 +11,4 @@ router.get('/register', (req, res)=> {
     res.render('register');
 })
 
-module.exports = rputer;
+module.exports = router;
