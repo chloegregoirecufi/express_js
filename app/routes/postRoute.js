@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-//TODO: Créer ensureAuthenticator dans Middlewares
+const postController = require('../controller/postController');
+//Middlewares pour vérifier que user est co
 const {ensureAuthenticator} = require('../middlewares/authMiddleware');
 
-//Page d'accueil 
-router.get('/', ensureAuthenticator, (req, res)=> {
-    res.render('accueil');
-})
+//Route pour afficher le formulaire de création de post
+router.get('/add', ensureAuthenticator, postController.showAddPost);
 
-//TODO: les autres routes à prévoir
+//route pour receptionner les données du formulaire de création de post
+router.post('/add', ensureAuthenticator, postController.addPost);
 
 module.exports = router;

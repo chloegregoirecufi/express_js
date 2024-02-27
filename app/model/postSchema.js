@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const userSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true, 
@@ -13,7 +13,8 @@ const userSchema = new mongoose.Schema({
         default: Date.now,
     },
     update_at: {
-        type: Date.now,
+        type: Date,
+        default: Date.now,
     }, 
     author: {
         type: mongoose.Schema.Types.ObjectId,
