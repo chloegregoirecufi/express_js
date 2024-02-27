@@ -30,6 +30,9 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+//configuration du dossier public
+app.use(express.static('public'));
+
 //configuration msg flash
 app.use(flash());
 
