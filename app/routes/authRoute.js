@@ -9,6 +9,8 @@ router.get('/login', (req, res)=> {
 
 //Page formulaire de creation de compte
 router.get('/register', authController.showRegistrationForm);
+//route qui receptionne les données du formulaire d'inscritpion
+router.post('/register', authController.registerUser);
 
 
 module.exports = router;
