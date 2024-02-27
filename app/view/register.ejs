@@ -1,7 +1,12 @@
 <%- include('./templates/header') %>
 
-<div class="container mt-5">
 <h1 >Créer un compte</h1>
+<div class="container mt-5">
+    <% if(error !== null) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+   <% } %>
 <!-- Si une erreur est renvoyé on l'affiche -->
 <form action="/register" method="POST">
     <div class="mb-3">
