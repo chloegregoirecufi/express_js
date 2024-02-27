@@ -40,3 +40,13 @@ exports.registerUser = async (req, res) => {
         res.render('register', {error: 'Erreur lors de l\'enregistrement de l\'utilisateur'});
     }
 }
+
+//afficher le formulaire de connexion
+exports.showLoginForm = (req, res) => {
+    res.render('login');
+}
+
+///connexion user
+exports.loginUser = (req, res) => {
+    
+}

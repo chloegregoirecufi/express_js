@@ -3,9 +3,9 @@ const router = express.Router();
 const authController = require('../controller/authController');
 
 //Page formulaire de connexion
-router.get('/login', (req, res)=> {
-    res.render('login');
-})
+router.get('/login', authController.showLoginForm);
+//route qui receptionne les donnée du form de co
+router.post('/login', authController.loginUser);
 
 //Page formulaire de creation de compte
 router.get('/register', authController.showRegistrationForm);
