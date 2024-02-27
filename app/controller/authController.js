@@ -1,3 +1,4 @@
+const passport = require('../passport-config');
 const User = require('../model/userSchema');
 const bcrypt = require('bcrypt');
 
@@ -13,7 +14,7 @@ exports.registerUser = async (req, res) => {
         //Vérifier si user existe déjà
         const existngUser = await User.findOne({email:email});
         if(existngUser){
-            return res.render('register', {eroor: 'Cet utilisateur existe déjà'})
+            return res.render('register', {error: 'Cet utilisateur existe déjà'})
         }
         //on vérifie que les champs soient bien remplis
         if(name === '' || email === '' || password === ''){
@@ -47,6 +48,15 @@ exports.showLoginForm = (req, res) => {
 }
 
 ///connexion user
-exports.loginUser = (req, res) => {
-    
+exports.loginUser = passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+});
+
+//déconnexion de user
+exports.LogoutUser = (req, res) =>{
+    req.logout();
+    res.redirect('/login');
 }
+
