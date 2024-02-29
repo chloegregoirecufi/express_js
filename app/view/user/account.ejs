@@ -1,0 +1,26 @@
+<%- include('./templates/header') %>
+<%- include('./templates/navbar') %>
+<div class="d-flex flex-column align-items-center">
+    <h1>Mes données personnelles</h1>
+    <div class="d-flex flex-wrap justify-content-start">
+        <% if(userPosts.length > 0){ %>
+            <% userPosts.forEach(post => { %>
+            <div class="card m-3" style="width:20rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= post.name %></h5>
+                    <p class="card-text"><%= post.email %></p>
+                </div>
+                <!-- Bouton pour modif ou supp -->
+                <div class="card-footer d-flex justify-content-center">
+                    <a href="/users/edit/<%= post._id%>" class="btn btn-warning m-2">Modifier</a>
+                </div>
+            </div>
+            <% }); %>
+
+            <% } %>
+    </div>
+
+</div>
+    
+<%- include('./templates/footer') %>
+    
